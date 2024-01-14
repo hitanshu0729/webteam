@@ -1,0 +1,52 @@
+<!-- views/addMarks.hbs -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Marks</title>
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+
+    <!-- Add any additional head content here -->
+
+</head>
+<body>
+    {{> navbar}}
+
+    <div class="container mt-4">
+        <h1>Add Marks</h1>
+
+        {{#if student}}
+            <p><strong>Name:</strong> {{student.name}}</p>
+            <p><strong>Batch:</strong> {{student.batch}}</p>
+            <p><strong>Registration Number:</strong> {{student.registrationNumber}}</p>
+            <p><strong>Semester:</strong> {{student.semester}}</p>
+
+            <!-- Display any additional student details you want -->
+        {{else}}
+            <p>Student not found.</p>
+        {{/if}}
+
+        <form action="/saveMarks" method="post">
+            <input type="hidden" name="registrationNumber" value="{{student.registrationNumber}}">
+            <!-- Add form fields for entering subject-wise marks -->
+
+            <button type="submit" class="btn btn-primary">Save Marks</button>
+        </form>
+
+        {{#if message}}
+            <p>{{message}}</p>
+        {{/if}}
+    </div>
+
+    <!-- Bootstrap JS (Optional) -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Add any additional scripts here -->
+
+</body>
+</html>

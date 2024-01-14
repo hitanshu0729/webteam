@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    {{>navbar}}
+    <style>
+        body {
+            background-color: #F5F5F5;
+        }
+
+        .head {
+            position: fixed;
+            top: 0;
+            left: 0;
+            margin: 0;
+            text-align: center;
+            background-color: #3232CD;
+            width: 100%;
+            color: white;
+        }
+
+        .content {
+            position: fixed;
+            padding: 18px;
+            margin: 4px;
+            top: 100px;
+            left: 240px;
+            width: 600px;
+            border: 2px solid #2E37FE;
+            border-radius: 25px;
+            box-shadow: 3px 5px blue;
+            background-color: white;
+        }
+
+        font {
+            font-size: 24px;
+            color: #2E37FE;
+        }
+
+        form {
+            font-size: 18px;
+        }
+
+        .content input[type="text"],
+        .content input[type="email"] {
+            height: 30px;
+            width: 450px;
+            box-sizing: border-box;
+            border: 1px solid #2E37FE;
+            border-radius: 25px;
+            text-align: center;
+            font-size: 16px;
+            margin-bottom: 10px;
+        }
+
+        .content input::placeholder {
+            color: #CCC;
+            font-size: 18px;
+        }
+
+        .content input[type="submit"] {
+            font-size: 20px;
+            text-align: center;
+            padding: 8px;
+            width: 120px;
+            border: 1px solid blue;
+            border-radius: 20px;
+            background-color: white;
+            color: #2E37FE;
+            cursor: pointer;
+        }
+
+        .content input[type="submit"]:hover {
+            color: white;
+            background-color: #2E37FE;
+        }
+    </style>
+</head>
+<body>
+{{!-- {{>navbar}}; --}}
+<div class="content">
+    <font><b>Login form</b></font><br><br>
+    <form action="/login" method="POST">
+        <b>Email address</b><br>
+        <input type="email" name="email" placeholder="Enter Email" required><br><br>
+        <b>Password</b><br>
+        <input type="password" name="password" placeholder="Enter your password" required><br><br>
+        <input type="submit" name="submit" value="Login">
+    </form>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

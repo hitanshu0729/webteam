@@ -1,0 +1,75 @@
+<!-- views/allStudents.hbs -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>All Students</title>
+    <!-- Include Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+</head>
+<body>
+    {{> navbar}}
+
+    <div class="container mt-5">
+        <h1 class="mb-4">All Students</h1>
+
+        <!-- Batch Filter Dropdown -->
+        <div class="mb-3">
+            <label for="batchFilter" class="form-label">Filter by Batch:</label>
+            <select class="form-select" id="batchFilter" onchange="filterStudentsByBatch()">
+                <option value="">All</option>
+                <option value="2021">2021</option>
+                <option value="2022">2022</option>
+                <option value="2023">2023</option>
+                <!-- Add more batch options as needed -->
+            </select>
+        </div>
+
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Batch</th>
+                    <th>Registration Number</th>
+                    <th>Semester</th>
+                    <th>Total Marks</th>
+                    <th>Percentage</th>
+                </tr>
+            </thead>
+            <tbody>
+                {{#each students}}
+                <tr>
+                    <td>{{this.name}}</td>
+                    <td>{{this.batch}}</td>
+                    <td><a href="{{../url}}/all-students/{{this.registrationNumber}}">{{this.registrationNumber}}</a></td>
+                    <td>{{this.semester}}</td>
+                    <td>{{this.total}}</td>
+                    <td>{{this.percentage}}</td>
+                </tr>
+                {{/each}}
+            </tbody>
+        </table>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script>
+        function filterStudentsByBatch() {
+            var filterValue = document.getElementById("batchFilter").value;
+
+            // Show/hide rows based on the filter value
+            var rows = document.querySelectorAll("tbody tr");
+            for (var i = 0; i < rows.length; i++) {
+                var batch = rows[i].getElementsByTagName("td")[1].innerText;
+                if (filterValue === "" || batch === filterValue) {
+                    rows[i].style.display = "";
+                } else {
+                    rows[i].style.display = "none";
+                }
+            }
+        }
+    </script>
+</body>
+</html>

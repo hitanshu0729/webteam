@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Subject</title>
+    <!-- Include Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+        <style>
+        body {
+            background-image: url('https://www.collegebatch.com/static/clg-gallery/national-institute-of-technology-jamshedpur-214725.jpg'); /* Specify the path to your background image */
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-attachment: fixed; /* Ensures the background image stays fixed */
+            background-color: #f8f9fa; /* Fallback color if the image is not available */
+        }
+
+        .container {
+            background-color: rgba(255, 255, 255, 0.9); /* Semi-transparent white background for container */
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin-top: 50px;
+            border: 1px solid black; /* Add border to div */
+            width: 400px; /* Reduced width */
+            margin-left: 50px; /* Move the container to the left */
+        }
+
+        h2 {
+            color: #007bff;
+        }
+
+        .form-control {
+            border: 1px solid black !important; /* Add black outline to form inputs */
+        }
+
+        .btn-primary {
+            border: 1px solid black; /* Add black outline to primary button */
+            transition: border-color 0.3s ease-in-out;
+        }
+
+        .btn-primary:hover {
+            border-color: black;
+            background-color: #28a745; /* Add green background on hover */
+        }
+    </style>
+</head>
+
+<body>
+    {{>navbar}}
+
+    <div class="container mt-5">
+        <h2 class="mb-4">Add Subject and Marks</h2>
+
+        <form action="/addSubject" method="POST">
+            <div class="mb-3">
+                <label for="registrationNumber" class="form-label">Registration Number *</label>
+                <input type="text" class="form-control" id="registrationNumber" name="registrationNumber" required>
+            </div>
+
+            <div class="mb-3">
+                <label for="subjectCode" class="form-label">Subject Code *</label>
+                <input type="text" class="form-control" id="subjectCode" name="subjectCode" required>
+            </div>
+
+            <div class="mb-3">
+                <label for="subjectName" class="form-label">Subject Name *</label>
+                <input type="text" class="form-control" id="subjectName" name="subjectName" required>
+            </div>
+
+            <div class="mb-3">
+    <label for="marks" class="form-label">Marks</label>
+    <input type="number" class="form-control" id="marks" name="marks" value=0  placeholder="Can be added later">
+</div>
+
+            <button type="submit" class="btn btn-primary">Add Subject </button>
+        </form>
+    </div>
+
+    <!-- Include Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        {{#if message}}
+            alert("{{message}}");
+        {{/if}}
+        
+        // Add mouseover effect to add btn-success class on hover
+        document.querySelector('.btn-primary').addEventListener('mouseover', function () {
+            this.classList.add('btn-success');
+        });
+
+        // Remove btn-success class on mouseout
+        document.querySelector('.btn-primary').addEventListener('mouseout', function () {
+            this.classList.remove('btn-success');
+        });
+    </script>
+</body>
+
+</html>
